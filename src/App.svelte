@@ -31,11 +31,23 @@
 		"Z": " ",
 	};
 
+	let Alphabet = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+
 	const Difficulty = {
 		Easy: "Easy",
 		Medium: "Medium",
 		Hard: "Hard"
 	};
+
+	function shuffle(input) {
+        let currentIndex = input.length, randomIndex;
+        while(currentIndex != 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [input[currentIndex], input[randomIndex]] = [input[randomIndex], input[currentIndex]];
+        }
+        return input;
+    }
 
 	let difficulties = [...Object.values(Difficulty)];
 
@@ -49,6 +61,7 @@
 	async function changeDifficulty(e){
 		difficulty = e.detail.value;
 		resetKey(sltn_key);
+		shuffle(Alphabet);
 		let quoteData = await getDifficultyQuote(difficulty);
 		quote = await quoteData['content'];
 		console.log(quote);
@@ -77,6 +90,12 @@
 	let quote = "Oops a quote should go here. Click a difficulty!";
 	let author = "Keagen Thomson";
 
+	import {onMount} from 'svelte';
+
+	onMount( () => {
+        shuffle(Alphabet);
+    })
+
 </script>
 
 <svelte:head>
@@ -86,7 +105,7 @@
 </svelte:head>
 <center>
 	<div class="column">
-		<Quote author={author} quote={quote} bind:sltn_key/>
+		<Quote author={author} quote={quote} bind:sltn_key Alphabet={Alphabet}/>
 		<ButtonGroup options={difficulties} 
 		name={"Difficulty"} 
 		value={difficulty} 

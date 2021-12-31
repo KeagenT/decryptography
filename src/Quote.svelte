@@ -5,7 +5,7 @@
     export let width = 25;
     export let sltn_key;
     const ALPHABET = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-    let Alphabet = ALPHABET;
+    export let Alphabet;
     let AlphabetM = new Map();
     $: AlphabetMap = buildMap(ALPHABET, AlphabetM)
     $: encryptedQuote = encodeSentence(quote);
@@ -33,16 +33,6 @@
             Map.set(letter, i);
         }
         return Map;
-    }
-
-    function shuffle(input) {
-        let currentIndex = input.length, randomIndex;
-        while(currentIndex != 0) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-            [input[currentIndex], input[randomIndex]] = [input[randomIndex], input[currentIndex]];
-        }
-        return input;
     }
 
     function mappedLetter(letter) {
@@ -74,12 +64,6 @@
         wrapped = wrapped.split("\n");
         return wrapped;
     }
-
-    import {onMount} from 'svelte';
-
-    onMount( () => {
-        shuffle(Alphabet);
-    })
 
 </script>
 <div class = "quote-group">
