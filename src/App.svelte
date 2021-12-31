@@ -97,6 +97,7 @@
 		--fonts: Helvetica, sans-serif;
 		--quote-size: 1.5rem;
 		--letter-width: 1rem;
+		--monospace: Consolas, monospace;
 	}
 
 	:global(*){

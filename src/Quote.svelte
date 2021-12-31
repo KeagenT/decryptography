@@ -106,7 +106,7 @@
 h2 {
     letter-spacing: .175rem;
     font-size: var(--quote-size);
-    font-family: monospace;
+    font-family: var(--monospace);
     margin: 0 0 .5rem 0;
     text-align: end;
     max-width: var(--text-content);

@@ -32,7 +32,7 @@
     border: none;
     padding: 0px;
     font-size: var(--quote-size);
-    font-family: monospace;
+    font-family: var(--monospace);
     height: var(--quote-size);
     display: inline-flex;
     max-width: var(--letter-width);
