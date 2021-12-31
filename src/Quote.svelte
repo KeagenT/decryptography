@@ -104,8 +104,9 @@
 }
 
 h2 {
-    letter-spacing: .175rem;
+    letter-spacing: var(--tracking);
     font-size: var(--quote-size);
+    font-weight: bold;
     font-family: var(--monospace);
     margin: 0 0 .5rem 0;
     text-align: end;

@@ -79,6 +79,11 @@
 
 </script>
 
+<svelte:head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+</svelte:head>
 <center>
 	<div class="column">
 		<Quote author={author} quote={quote} bind:sltn_key/>
@@ -89,7 +94,6 @@
 	</div>
 </center>
 
-
 <style>
 	:global(:root){
 		--page-content: 800px;
@@ -97,7 +101,8 @@
 		--fonts: Helvetica, sans-serif;
 		--quote-size: 1.5rem;
 		--letter-width: 1rem;
-		--monospace: Consolas, monospace;
+		--tracking: .245rem;
+		--monospace: 'Inconsolata', monospace;
 	}
 
 	:global(*){
@@ -122,8 +127,9 @@
 
 	@media screen and (max-width: 500px){
 		:global(:root){
+			--text-content: 350px;
 			--quote-size: 1.25rem;
-			--letter-width: .865rem;
+			--letter-width: .875rem;
 		}
 
 		.column{
@@ -134,11 +140,12 @@
 	@media screen and (max-width: 400px){
 		:global(:root){
 			--quote-size: 1.2rem;
-			--letter-width: .84rem;
+			--letter-width: .85rem;
+			--page-content: 100vw
 		}
 
 		.column{
-			margin-right: 1.5rem;
+			padding: 2rem;
 		}
 	}
 
