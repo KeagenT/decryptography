@@ -25,6 +25,7 @@
 
 <style>
  .letter {
+    border-radius: 0px;
     margin: 0;
     font-weight: bold;
     background-color: whitesmoke;
