@@ -31,7 +31,9 @@
 		"Z": " ",
 	};
 
-	let Alphabet = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+	const ALPHABET  = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+
+	let Alphabet = Array.from(ALPHABET);
 
 	const Difficulty = {
 		Easy: "Easy",
@@ -40,14 +42,30 @@
 	};
 
 	function shuffle(input) {
-        let currentIndex = input.length, randomIndex;
-        while(currentIndex != 0) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
+		input = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+        let n = input.length - 1;
+        for(let currentIndex = 0; currentIndex < n; currentIndex++){
+            let randomIndex = randRange(currentIndex + 1, n);
             [input[currentIndex], input[randomIndex]] = [input[randomIndex], input[currentIndex]];
         }
+		console.log(ALPHABET.join(''));
+		console.log(input.join(''));
+		console.log(validateDerangement(ALPHABET, input));
         return input;
     }
+
+	function randRange(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	function validateDerangement(base, randomized) {
+		for(const [i, letter] of randomized.entries()){
+			if(letter == base[i]){
+				return false;
+			}
+		}
+		return true;
+	}
 
 	let difficulties = [...Object.values(Difficulty)];
 
@@ -61,7 +79,7 @@
 	async function changeDifficulty(e){
 		difficulty = e.detail.value;
 		resetKey(sltn_key);
-		shuffle(Alphabet);
+		Alphabet = shuffle(Alphabet);
 		let quoteData = await getDifficultyQuote(difficulty);
 		quote = await quoteData['content'];
 		console.log(quote);
